@@ -22,6 +22,16 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+
+config :hackathon_app, HackathonApp.Guardian,
+  issuer: "hackathon_app",
+  secret_key: "4YWaDbj16OL3GkzhTN9WS0MHJPi10kuJRlxjgRt9NbGigIDiNdmOvdzBHWsyQfeC"
+
+
+config :hackathon_app, HackathonApp.AuthAccessPipeline,
+  module:  HackathonApp.Guardian,
+  error_handler: HackathonAppWeb.FallbackController
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
