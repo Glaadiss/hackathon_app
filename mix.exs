@@ -39,6 +39,7 @@ defmodule HackathonApp.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      {:cors_plug, "~> 1.2"},
       {:guardian, "~> 1.0-beta"}
     ]
   end

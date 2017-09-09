@@ -11,7 +11,9 @@ defmodule HackathonAppWeb.UserController do
     render(conn, "index.json", users: users)
   end
 
-  def create(conn, %{"user" => user_params}) do
+  def create(conn, params) do
+    IO.inspect params
+    %{"user" => user_params} = params
     with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
       conn
       |> put_status(:created)

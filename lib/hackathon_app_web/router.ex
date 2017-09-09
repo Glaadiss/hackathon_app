@@ -13,12 +13,14 @@ defmodule HackathonAppWeb.Router do
     pipe_through :api
     post "/login", LoginController, :create
     delete "/login", LoginController, :delete
+    resources "/users", UserController, only: [:create]    
   end
 
   scope "/api", HackathonAppWeb do
     pipe_through [:api, :ensure_authed_access]
-    resources "/users", UserController, except: [:new, :edit]    
+    resources "/users", UserController, except: [:new, :edit, :create]    
     resources "/organizations", OrganizationController, except: [:new, :edit]
+    resources "/awards", AwardController, except: [:new, :edit]
     
   end
 end
