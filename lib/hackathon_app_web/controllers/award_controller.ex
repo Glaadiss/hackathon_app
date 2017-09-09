@@ -1,13 +1,19 @@
 defmodule HackathonAppWeb.AwardController do
   use HackathonAppWeb, :controller
-
+  alias HackathonApp.Repo
   alias HackathonApp.Core
   alias HackathonApp.Core.Award
-
+  import Ecto.Query, only: [from: 2]
+  
   action_fallback HackathonAppWeb.FallbackController
 
-  def index(conn, _params) do
-    awards = Core.list_awards()
+  def index(conn, params) do
+    awards = cond do
+      params["user_id"] -> Repo.all(from u in Award, where: u.user_id == ^params["user_id"])
+      params["subject"] -> Repo.all(from u in Award, where: u.subject == ^params["subject"] )
+      params["topic"] -> Repo.all(from u in Award, where: ilike(u.topic, ^"%#{params["topic"]}%"))
+      true -> Core.list_awards() 
+    end
     render(conn, "index.json", awards: awards)
   end
 

@@ -20,6 +20,9 @@ defmodule HackathonAppWeb.Router do
     pipe_through [:api, :ensure_authed_access]
     resources "/users", UserController, except: [:new, :edit, :create]    
     resources "/organizations", OrganizationController, except: [:new, :edit]
-    resources "/awards", AwardController, except: [:new, :edit]
+    resources "/awards", AwardController, except: [:new, :edit] do
+      resources "/comments", CommentController, only: [:create, :index]      
+    end
+    resources "/comments", CommentController, only: [:update, :delete, :show]
   end
 end
