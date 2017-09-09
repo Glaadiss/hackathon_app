@@ -16,6 +16,6 @@ defmodule HackathonApp.Core.Organization do
   def changeset(%Organization{} = organization, attrs) do
     organization
     |> cast(attrs, [:name, :type, :nip])
-    |> validate_required([:name, :type, :nip])
+    |> validate_required([:name, :nip])
   end
 end

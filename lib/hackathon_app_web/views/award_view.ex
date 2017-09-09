@@ -12,9 +12,19 @@ defmodule HackathonAppWeb.AwardView do
 
   def render("award.json", %{award: award}) do
     %{id: award.id,
-      title: award.title,
+      subject: award.subject,
+      topic: award.topic,
+      city: award.city,
+      authorFirstName: award.authorFirstName,
+      authorLastName: award.authorLastName,
+      province: award.province,
+      value_to: award.value_to,
+      value_from: award.value_from,
+      state: award.state,
+      user_id: award.user_id,
+      avatar: award.avatar,
       view_count: award.view_count,
       body: award.body,
-      status: award.status}
+      }
   end
 end

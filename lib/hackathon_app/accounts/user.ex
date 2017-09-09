@@ -12,7 +12,7 @@ defmodule HackathonApp.Accounts.User do
     field :password, :string
     field :status, :integer
     field :type, :string
-
+    # has_many :awards, HackathonApp.Core.Award    
     timestamps()
   end
 
@@ -20,6 +20,7 @@ defmodule HackathonApp.Accounts.User do
   def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:name, :lastname, :email, :type, :password, :status])
-    # |> validate_required([:name, :lastname, :email, :type, :password, :status])
+    |> validate_required([ :email, :password])
+    |> unique_constraint(:email)
   end
 end

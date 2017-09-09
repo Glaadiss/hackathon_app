@@ -1,5 +1,5 @@
 defmodule HackathonApp.Guardian do
-  use Guardian, otp_app: :my_app, secret_key: "dsadsafsa23d21321dsa"
+  use Guardian, otp_app: :hackathon_app, secret_key: "dsadsafsa23d21321dsa"
   alias HackathonApp.Accounts
   def subject_for_token(resource, _claims) do
     {:ok, to_string(resource.id)}

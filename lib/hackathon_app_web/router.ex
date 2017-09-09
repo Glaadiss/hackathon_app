@@ -6,7 +6,7 @@ defmodule HackathonAppWeb.Router do
   end
 
   pipeline :ensure_authed_access do
-    plug HackathonApp.AuthAccessPipeline
+    # plug HackathonApp.AuthAccessPipeline
   end
   
   scope "/api", HackathonAppWeb do
@@ -21,6 +21,5 @@ defmodule HackathonAppWeb.Router do
     resources "/users", UserController, except: [:new, :edit, :create]    
     resources "/organizations", OrganizationController, except: [:new, :edit]
     resources "/awards", AwardController, except: [:new, :edit]
-    
   end
 end

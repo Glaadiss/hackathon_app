@@ -20,7 +20,7 @@ defmodule HackathonApp.Mixfile do
   def application do
     [
       mod: {HackathonApp.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :httpoison, :arc_ecto]
     ]
   end
 
@@ -40,6 +40,9 @@ defmodule HackathonApp.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:cors_plug, "~> 1.2"},
+      {:httpoison, "~> 0.13"},
+      {:arc, "~> 0.8.0"},
+      {:arc_ecto, "~> 0.7.0"},
       {:guardian, "~> 1.0-beta"}
     ]
   end
